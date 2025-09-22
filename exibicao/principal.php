@@ -1,3 +1,7 @@
+<?php
+require_once __DIR__ . "/../dados/cursos.php";
+require_once __DIR__ . "/../uteis/formatador.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -11,33 +15,33 @@
     <title>Projeto php fundamentos</title>
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light">
-        <span class="navbar-brand mb-0 h1">Treinaweb</span>
-    </nav>
-
-    <div class="container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Nome do curso</th>
-                    <th scope="col">Carga Horária</th>
-                    <th scope="col">Versão da ferramenta</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach(cursos() as $curso) : ?>
+      <nav class="navbar navbar-light bg-light">
+          <span class="navbar-brand mb-0 h1">Treinaweb</span>
+        </nav>
+        
+        
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Nome do curso</th>
+                        <th scope="col">Carga Horária</th>
+                        <th scope="col">Versão da ferramenta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php  foreach(cursos() as $curso) : ?>
                     <?php if (!$curso["status"]) {
                         continue;
                     } ?>
-
                     <tr>
                         <th scope="row"><?= $curso["nome_curso"] ?></th>
                         <td><?= carga_horaria($curso["carga_horaria"]) ?></td>
                         <td><?= $curso["versao_ferramenta"] ?></td>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
     </div>
 
     <!-- JavaScript (Opcional) -->
